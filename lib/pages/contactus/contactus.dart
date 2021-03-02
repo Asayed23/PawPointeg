@@ -40,19 +40,19 @@ class Contactus extends StatelessWidget {
                         height: 38,
                         color: Colors.blueGrey,
                       ),
-                      title: _header('01020720189'),
-                      onTap: () => _launchURL('tel:01020720189'),
-                    ),
-                    ListTile(
-                      leading: SvgPicture.asset(
-                        "assets/icons/phone-call.svg",
-                        width: 38,
-                        height: 38,
-                        color: Colors.blueGrey,
+                      title: Row(
+                        children: [
+                          GestureDetector(
+                              onTap: () => _launchURL('tel:01020720189'),
+                              child: _header('01020720189')),
+                          GestureDetector(
+                              onTap: () => _launchURL('tel:01008728854'),
+                              child: _header('01008728854')),
+                        ],
                       ),
-                      title: _header('01008728854 '),
-                      onTap: () => _launchURL('tel:01008728854'),
+                      onTap: () => {},
                     ),
+
                     // Divider(),
                     ListTile(
                       leading: SvgPicture.asset(
@@ -65,18 +65,9 @@ class Contactus extends StatelessWidget {
                           _launchURL('https://wa.me/message/DX6QGNPAX3ZKK1'),
                     ),
                     // Divider(),
-                    ListTile(
-                      leading: SvgPicture.asset(
-                        "assets/icons/whatsapp.svg",
-                        width: 38,
-                        height: 38,
-                      ),
-                      title: _header('01008728854'),
-                      onTap: () =>
-                          _launchURL('https://wa.me/message/DX6QGNPAX3ZKK1'),
-                    ),
+
                     Divider(),
-                    
+
                     ListTile(
                       leading: SvgPicture.asset(
                         "assets/icons/facebook.svg",

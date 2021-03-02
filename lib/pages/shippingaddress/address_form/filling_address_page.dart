@@ -24,7 +24,7 @@ class FillingAddressPageState extends State<FillingAddressPage> {
 
   bool _isSubmitting, _obscureText = true;
   String _username, _email, _password;
-  List<String> _cities = ['Zayed', '6-october'];
+  List<String> _cities = ['Shekh Zayed', '6 of October'];
   // var _localaddress = new Map();
   var _localaddress = {
     "address_name": "",
@@ -53,9 +53,7 @@ class FillingAddressPageState extends State<FillingAddressPage> {
   String _address_type = "";
   @override
   void initState() {
-    setState(() {
-      
-    });
+    setState(() {});
 
     super.initState();
   }
@@ -81,43 +79,44 @@ class FillingAddressPageState extends State<FillingAddressPage> {
 
   Widget _input(_mustbein, _key, _initialvalue) {
     return Container(
-    height: h(9),
-              margin: EdgeInsets.only(top:h(2),left: w(3), bottom: h(1.5), right: w(3)),
-              decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-              color: Color(0xffffffff),
-              border: Border.all(width: 1.0, color: const Color(0xffd8d8d)),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0x29000000),
-                  offset: Offset(-10, -10),
-                  blurRadius: 6,
-                ),
-              ]),
-    
-    child:Padding(
-        padding: EdgeInsets.only(top: h(0)),
-        child: TextFormField(
-            onSaved: (val) => _localaddress[_key] = val,
-            validator: (val) {
-              return _mustbein
-                  ? val.isEmpty
-                      ? "Please Enter $_key "
-                      : null
-                  : null;
-            },
-            initialValue: _initialvalue,
-            decoration: InputDecoration(
-              enabledBorder: const OutlineInputBorder(
-      // width: 0.0 produces a thin "hairline" border
-      borderSide: const BorderSide(color: Colors.white, width: 0.0),
-    ),
-              
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.0)),
-              labelText: _key,
-              hintText: _mustbein ? 'Please Enter $_key *' : 'Optional $_key',
-            )
-            )));
+        height: h(9),
+        margin:
+            EdgeInsets.only(top: h(2), left: w(3), bottom: h(1.5), right: w(3)),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12.0),
+            color: Color(0xffffffff),
+            border: Border.all(width: 1.0, color: const Color(0xffd8d8d)),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0x29000000),
+                offset: Offset(-10, -10),
+                blurRadius: 6,
+              ),
+            ]),
+        child: Padding(
+            padding: EdgeInsets.only(top: h(0)),
+            child: TextFormField(
+                onSaved: (val) => _localaddress[_key] = val,
+                validator: (val) {
+                  return _mustbein
+                      ? val.isEmpty
+                          ? "Please Enter $_key "
+                          : null
+                      : null;
+                },
+                initialValue: _initialvalue,
+                decoration: InputDecoration(
+                  enabledBorder: const OutlineInputBorder(
+                    // width: 0.0 produces a thin "hairline" border
+                    borderSide:
+                        const BorderSide(color: Colors.white, width: 0.0),
+                  ),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0)),
+                  labelText: _key,
+                  hintText:
+                      _mustbein ? 'Please Enter $_key *' : 'Optional $_key',
+                ))));
   }
 
   Widget _showFormActions(userid) {
@@ -129,35 +128,37 @@ class FillingAddressPageState extends State<FillingAddressPage> {
                   valueColor:
                       AlwaysStoppedAnimation(Theme.of(context).primaryColor))
               : Container(
-    // height: h(9),
-              // margin: EdgeInsets.only(top:h(2),left: w(3), bottom: h(1.5), right: w(3)),
-              decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-              color: Color(0xffe83636),
-              border: Border.all(width: 1.0, color: const Color(0xffd8d8d8)),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0x29000000),
-                  offset: Offset(-10, -10),
-                  blurRadius: 6,
-                ),
-              ]),
-    
-    child:FlatButton(
-                  child: Text('Submit',
-                      style: Theme.of(context)
-                          .textTheme
-                          .body1
-                          .copyWith(color: Colors.white)),
-                  // elevation: 8.0,
-                  // shape: RoundedRectangleBorder(
-                  //     borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                  color: Theme.of(context).primaryColor,
-                  onPressed: () {
-                    _submit(userid);
-                  },
-                ),
-    )]));
+                  // height: h(9),
+                  // margin: EdgeInsets.only(top:h(2),left: w(3), bottom: h(1.5), right: w(3)),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.0),
+                      color: Color(0xffe83636),
+                      border: Border.all(
+                          width: 1.0, color: const Color(0xffd8d8d8)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0x29000000),
+                          offset: Offset(-10, -10),
+                          blurRadius: 6,
+                        ),
+                      ]),
+
+                  child: FlatButton(
+                    child: Text('Submit',
+                        style: Theme.of(context)
+                            .textTheme
+                            .body1
+                            .copyWith(color: Colors.white)),
+                    // elevation: 8.0,
+                    // shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    color: Theme.of(context).primaryColor,
+                    onPressed: () {
+                      _submit(userid);
+                    },
+                  ),
+                )
+        ]));
   }
 
   _submit(userid) {
@@ -258,7 +259,7 @@ class FillingAddressPageState extends State<FillingAddressPage> {
                                 : state.shippingAddress[arguments['index']]
                                     .address_name),
                         _showCityInput(arguments['new']
-                            ? 'Zayed'
+                            ? 'Shekh Zayed'
                             : state.shippingAddress[arguments['index']]
                                 .address_name),
                         _input(
@@ -275,13 +276,15 @@ class FillingAddressPageState extends State<FillingAddressPage> {
                                 ? null
                                 : state.shippingAddress[arguments['index']]
                                     .address_name),
-                        _input(
-                            false,
-                            'address_type',
-                            arguments['new']
-                                ? null
-                                : state.shippingAddress[arguments['index']]
-                                    .addresstype),
+
+                        // _input(
+                        //     false,
+                        //     'address_type',
+                        //     arguments['new']
+                        //         ? null
+                        //         : state.shippingAddress[arguments['index']]
+                        //             .addresstype),
+
                         _input(
                             false,
                             'building',

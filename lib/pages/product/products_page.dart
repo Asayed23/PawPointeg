@@ -54,12 +54,14 @@ class ProductsPageState extends State<ProductsPage> {
   List<String> _listofcategory;
   List<String> _listofsubCategory;
   String _titlename;
+  int initalindex;
   Product _filterProduct = Product();
   final scrollController = ScrollController();
 
   // Inital state
   void initState() {
     _titlename = '';
+
     scrollController.addListener(() {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
@@ -79,80 +81,66 @@ class ProductsPageState extends State<ProductsPage> {
   }
 
   Widget _horizontalListView(state) {
-    return new Container(
-      height: h(7),
-      child: new ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: _listofcategory.length + 1,
-        itemBuilder: (context, index) {
-          return index == 0
-              ? OutlineButton(
-                  child: Text(
-                    "All",
-                    style: TextStyle(
-                        color: widget.thetarget['category'] == 'All'
-                            ? Color(0xffe83636)
-                            : Colors.grey),
-                  ),
-                  borderSide: BorderSide(
-                      color: widget.thetarget['category'] == 'All'
-                          ? Color(0xffe83636)
-                          : Colors.grey),
-                  shape: StadiumBorder(),
-                  onPressed: () {
-                    _filterProduct.pet = widget.thetarget['pet'];
-                    _filterProduct.category = 'All';
-                    _filterProduct.service = widget.thetarget['service'];
-                    //_filterProduct.subCategory = 'outoffilter';
-                    _filterProduct.subCategory = 'outoffilter';
-                    _filterProduct.bestSelling = false;
-                    _filterProduct.limitedOffer = false;
-                    print(_filterProduct.toJson());
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateShowProduct(null));
+    return DefaultTabController(
+        length: _listofcategory.length + 1, // length of tabs
+        initialIndex: _listofcategory.indexWhere((categ) =>
+                    categ.startsWith(widget.thetarget['category'])) !=
+                -1
+            ? _listofcategory.indexWhere(
+                    (categ) => categ.startsWith(widget.thetarget['category'])) +
+                1
+            : 0,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                  child: TabBar(
+                      labelColor: Colors.red,
+                      unselectedLabelColor: Colors.grey,
+                      isScrollable: true,
+                      tabs: List<Widget>.generate(_listofcategory.length + 1,
+                          (int index) {
+                        return index == 0
+                            ? GestureDetector(
+                                onTap: () {
+                                  _filterProduct.pet = widget.thetarget['pet'];
+                                  _filterProduct.category = 'All';
+                                  _filterProduct.service =
+                                      widget.thetarget['service'];
+                                  //_filterProduct.subCategory = 'outoffilter';
+                                  _filterProduct.subCategory = 'outoffilter';
+                                  _filterProduct.bestSelling = false;
+                                  _filterProduct.limitedOffer = false;
+                                  print(_filterProduct.toJson());
+                                  StoreProvider.of<AppState>(context)
+                                      .dispatch(UpdateShowProduct(null));
 
-                    Navigator.popAndPushNamed(context, '/products',
-                        arguments: {'thetarget': _filterProduct.toJson()});
-                  } //do something,
-                  )
-              : OutlineButton(
-                  child: Text(
-                    _listofcategory[index - 1],
-                    style: TextStyle(
-                        color: widget.thetarget['category'] ==
-                                _listofcategory[index - 1]
-                            ? Color(0xffe83636)
-                            : Colors.grey),
-                  ),
-                  borderSide: BorderSide(
-                      color: widget.thetarget['category'] ==
-                              _listofcategory[index - 1]
-                          ? Color(0xffe83636)
-                          : Colors.grey),
-                  //highlightColor: Color(0xffe83636),
-                  shape: StadiumBorder(),
-                  // icon: SvgPicture.asset(
-                  //   "assets/icons/pet-hotel-signal.svg",
-                  //   width: 38,
-                  //   height: 38,
-                  // ),
-                  onPressed: () {
-                    _filterProduct.pet = widget.thetarget['pet'];
-                    _filterProduct.category = _listofcategory[index - 1];
-                    _filterProduct.bestSelling = false;
-                    _filterProduct.service = widget.thetarget['service'];
-                    _filterProduct.subCategory = 'outoffilter';
-                    print(_filterProduct.toJson());
-                    StoreProvider.of<AppState>(context)
-                        .dispatch(UpdateShowProduct(null));
-                    Navigator.popAndPushNamed(context, '/products',
-                        arguments: {'thetarget': _filterProduct.toJson()});
-                  } //do something,
-                  );
-        },
-      ),
-    );
+                                  Navigator.popAndPushNamed(
+                                      context, '/products', arguments: {
+                                    'thetarget': _filterProduct.toJson()
+                                  });
+                                },
+                                child: Tab(text: "All"))
+                            : GestureDetector(
+                                onTap: () {
+                                  _filterProduct.pet = widget.thetarget['pet'];
+                                  _filterProduct.category =
+                                      _listofcategory[index - 1];
+                                  _filterProduct.bestSelling = false;
+                                  _filterProduct.service =
+                                      widget.thetarget['service'];
+                                  _filterProduct.subCategory = 'outoffilter';
+                                  print(_filterProduct.toJson());
+                                  StoreProvider.of<AppState>(context)
+                                      .dispatch(UpdateShowProduct(null));
+                                  Navigator.popAndPushNamed(
+                                      context, '/products', arguments: {
+                                    'thetarget': _filterProduct.toJson()
+                                  });
+                                },
+                                child: Tab(text: _listofcategory[index - 1]));
+                      })))
+            ]));
   }
 
   Widget _horizontaSubCategory(state) {
@@ -331,6 +319,7 @@ class ProductsPageState extends State<ProductsPage> {
     widget.thetarget['category'] == 'outoffilter'
         ? _titlename = widget.thetarget['pet']
         : _titlename = widget.thetarget['category'];
+    if (widget.thetarget['service'] == 'service') _titlename = 'Services';
 
     if (_allfilterproducts != null) {
       _cureentProducts = loadmoreimages(_allfilterproducts, _cureentProducts);

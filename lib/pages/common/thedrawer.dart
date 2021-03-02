@@ -71,63 +71,65 @@ class _ThedrawerState extends State<Thedrawer> {
                       Navigator.pop(context);
                     },
                   ),
-                  ListTile(
-                    leading: SvgPicture.asset(
-                      "assets/icons/pet-grooming.svg",
-                      width: 38,
-                      height: 38,
-                    ),
-                    title: Text('Service'),
-                    onTap: () {
-                      _filterProduct.pet = 'outoffilter';
-                      _filterProduct.category = 'outoffilter';
-                      _filterProduct.bestSelling = false;
-                      _filterProduct.limitedOffer = false;
-                      _filterProduct.service = 'service';
-                      _filterProduct.subCategory = 'outoffilter';
-                      Navigator.pushNamed(context, '/products',
-                          arguments: {'thetarget': _filterProduct.toJson()});
-                    },
-                  ),
-                  ListTile(
-                    leading: SvgPicture.asset(
-                      "assets/icons/pet-hotel-signal.svg",
-                      width: 38,
-                      height: 38,
-                    ), // Image.asset('assets/icons/dog.svg'),
-                    title: Text('Dog'),
-                    onTap: () {
-                      _filterProduct.pet = 'Dog';
-                      _filterProduct.category = 'outoffilter';
-                      _filterProduct.bestSelling = false;
-                      _filterProduct.limitedOffer = false;
-                      _filterProduct.service = 'product';
-                      _filterProduct.subCategory = 'outoffilter';
-                      Navigator.pushNamed(context, '/products',
-                          arguments: {'thetarget': _filterProduct.toJson()});
-                    },
-                  ),
-                  ListTile(
-                    leading: SvgPicture.asset(
-                      "assets/icons/cat (1).svg",
-                      width: 38,
-                      height: 38,
-                    ), // Image.asset('assets/icons/dog.svg'),
-                    title: Text('cat'),
-                    onTap: () {
-                      // Update the state of the app
-                      // ...
-                      // Then close the drawer
-                      _filterProduct.pet = 'Cat';
-                      _filterProduct.category = 'outoffilter';
-                      _filterProduct.bestSelling = false;
-                      _filterProduct.limitedOffer = false;
-                      _filterProduct.service = 'product';
-                      _filterProduct.subCategory = 'outoffilter';
-                      Navigator.pushNamed(context, '/products',
-                          arguments: {'thetarget': _filterProduct.toJson()});
-                    },
-                  ),
+
+                  // ListTile(
+                  //   leading: SvgPicture.asset(
+                  //     "assets/icons/pet-grooming.svg",
+                  //     width: 38,
+                  //     height: 38,
+                  //   ),
+                  //   title: Text('Service'),
+                  //   onTap: () {
+                  //     _filterProduct.pet = 'outoffilter';
+                  //     _filterProduct.category = 'outoffilter';
+                  //     _filterProduct.bestSelling = false;
+                  //     _filterProduct.limitedOffer = false;
+                  //     _filterProduct.service = 'service';
+                  //     _filterProduct.subCategory = 'outoffilter';
+                  //     Navigator.pushNamed(context, '/products',
+                  //         arguments: {'thetarget': _filterProduct.toJson()});
+                  //   },
+                  // ),
+                  // ListTile(
+                  //   leading: SvgPicture.asset(
+                  //     "assets/icons/pet-hotel-signal.svg",
+                  //     width: 38,
+                  //     height: 38,
+                  //   ), // Image.asset('assets/icons/dog.svg'),
+                  //   title: Text('Dog'),
+                  //   onTap: () {
+                  //     _filterProduct.pet = 'Dog';
+                  //     _filterProduct.category = 'outoffilter';
+                  //     _filterProduct.bestSelling = false;
+                  //     _filterProduct.limitedOffer = false;
+                  //     _filterProduct.service = 'product';
+                  //     _filterProduct.subCategory = 'outoffilter';
+                  //     Navigator.pushNamed(context, '/products',
+                  //         arguments: {'thetarget': _filterProduct.toJson()});
+                  //   },
+                  // ),
+                  // ListTile(
+                  //   leading: SvgPicture.asset(
+                  //     "assets/icons/cat (1).svg",
+                  //     width: 38,
+                  //     height: 38,
+                  //   ), // Image.asset('assets/icons/dog.svg'),
+                  //   title: Text('cat'),
+                  //   onTap: () {
+                  //     // Update the state of the app
+                  //     // ...
+                  //     // Then close the drawer
+                  //     _filterProduct.pet = 'Cat';
+                  //     _filterProduct.category = 'outoffilter';
+                  //     _filterProduct.bestSelling = false;
+                  //     _filterProduct.limitedOffer = false;
+                  //     _filterProduct.service = 'product';
+                  //     _filterProduct.subCategory = 'outoffilter';
+                  //     Navigator.pushNamed(context, '/products',
+                  //         arguments: {'thetarget': _filterProduct.toJson()});
+                  //   },
+                  // ),
+
                   ListTile(
                     leading: SvgPicture.asset(
                       "assets/icons/like.svg",
