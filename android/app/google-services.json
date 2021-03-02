@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "278582665504",
+    "project_id": "pawpoint-6a345",
+    "storage_bucket": "pawpoint-6a345.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278582665504:android:25e555fe1ab5845868b745",
+        "android_client_info": {
+          "package_name": "com.techiecube.pawpoint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278582665504-p35t7emo290k8kvjqnb5n2t8vrpqqjpb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkj4_rIkgQBJ_KbttOFyCmzBr9iqv9I4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278582665504-p35t7emo290k8kvjqnb5n2t8vrpqqjpb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
