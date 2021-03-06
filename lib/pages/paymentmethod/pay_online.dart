@@ -37,9 +37,12 @@ class _PayOnlineState extends State<PayOnline> {
           Order _order;
           // Order _order = Order();
           _order = state.currentorder;
+          print('Payemet irl......................');
+          print(pay_url);
           final Map arguments =
               ModalRoute.of(context).settings.arguments as Map;
           widget.payUrl = arguments['payUrl'];
+          print(widget.payUrl);
           return Scaffold(
             appBar: AppBar(
               title: Text('Pay Online'),
