@@ -23,6 +23,7 @@ class OrderDetail extends StatefulWidget {
 
 class _OrderDetailState extends State<OrderDetail> {
   // Order newOrder;
+  int index;
   // bool _stillloading;
   // getorderdetails() async {
   //   // final List<Product> cartProducts = store.state.cartProducts;
@@ -83,7 +84,9 @@ class _OrderDetailState extends State<OrderDetail> {
       builder: (_, state) {
         final Map arguments = ModalRoute.of(context).settings.arguments as Map;
         widget.order = arguments['order'];
+
         return Scaffold(
+          appBar: AppBar(),
           body: ListView(
             shrinkWrap: true,
             physics: ScrollPhysics(),
@@ -108,15 +111,24 @@ class _OrderDetailState extends State<OrderDetail> {
                         // ),
                         //backgroundImage: AssetImage('assets/images/thanks.jpg'),
 
-                        _header('Order ${widget.order.orderNumber}'),
+                        Center(
+                            child:
+                                _header('Order ${widget.order.orderNumber}')),
                         // _horizontalListView(state.serviceProducts, 'service'),
-                        new SizedBox(height: h(1)),
-                        Divider(),
+
                         // _header(
                         //     'will be delivered to ${state.shippingAddress[newOrder.shippingaddress].address_name}  ${state.shippingAddress[newOrder.shippingaddress].city}'),
+
+                        Center(
+                          child: _header('${widget.order.totalprice} EGP'),
+                        ),
                         Divider(),
-                        _header(
-                            'Order Amount is ${widget.order.totalprice} EGP'),
+                        Text('Status: ${widget.order.orderStatus}'),
+                        Text(' ${widget.order.order_date}'),
+                        Text(' ${widget.order.paymentMethod}'),
+
+                        // Text(
+                        //     'area ${state.shippingAddress[widget.order.shippingaddress].area} city ${state.shippingAddress[widget.order.shippingaddress].city} Building ${state.shippingAddress[widget.order.shippingaddress].building} Stree ${state.shippingAddress[widget.order.shippingaddress].street}'),
                         Divider(),
                         _header('Order Items'),
                         _horizontalListView(widget.order.products, 'No'),
@@ -160,7 +172,7 @@ Widget _horizontalListView(products, target) {
 Widget _header(str) {
   return Container(
       child: Align(
-    alignment: Alignment.centerLeft,
+    alignment: Alignment.center,
     child: Padding(
       padding: const EdgeInsets.only(left: 25),
       child: Text(str,

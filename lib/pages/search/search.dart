@@ -129,8 +129,8 @@ class _SearchPageState extends State<SearchPage> {
                                                     : 3,
                                             crossAxisSpacing: w(1),
                                             mainAxisSpacing: h(1),
-                                            childAspectRatio:
-                                                ((w(100) / 2)) / (h(100) / 4)),
+                                            childAspectRatio: ((w(100) / 2)) /
+                                                (h(100) / 2.9)),
                                     itemBuilder: (context, i) {
                                       if (i < filteredproducts.length) {
                                         return ProductItem(

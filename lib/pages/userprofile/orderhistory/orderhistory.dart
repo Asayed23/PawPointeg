@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:loading_animations/loading_animations.dart';
 
 import 'package:pawpoint/db_links/db_links.dart';
 import 'package:pawpoint/models/order.dart';
@@ -85,70 +86,85 @@ class _OrderHistoryState extends State<OrderHistory> {
           print(state.user.id);
           return Scaffold(
             appBar: theappBar(context, 'My Orders'),
-            body: ListView(
-              shrinkWrap: true,
-              physics: ScrollPhysics(),
-              children: <Widget>[
-                new SizedBox(height: 10.0),
-                new Container(
-                  child: new ListView.builder(
+            body: _stillloading
+                ? AlertDialog(
+                    title: Text('......Please Wait..'),
+                    content:
+                        Container(width: 32, child: LoadingRotating.square()))
+                : ListView(
                     shrinkWrap: true,
-                    itemCount: state.orders.length,
                     physics: ScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      print(state.orders[index].id);
-                      return Container(
-                      height: h(12),
-              margin: EdgeInsets.only(top:h(2),left: w(3), bottom: h(1.5), right: w(3)),
-              decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-              color: Color(0xffffffff),
-              border: Border.all(width: 1.0, color: const Color(0xffd8d8d8)),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0x29000000),
-                  offset: Offset(-10, -10),
-                  blurRadius: 6,
-                ),
-              ],
-            ),
-                      child:new Column(
-                        children: <Widget>[
-                          // _maincategory(context),
-                          //Divider(),
-                          _stillloading
-                              ? Container(
-                                  child: Center(
-                                  child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation(
-                                          Theme.of(context).accentColor)),
-                                ))
-                              : Text(''),
+                    children: <Widget>[
+                      new SizedBox(height: 10.0),
+                      new Container(
+                        child: new ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: state.orders.length,
+                          physics: ScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            print(state.orders[index].id);
+                            return Container(
+                                height: h(14),
+                                margin: EdgeInsets.only(
+                                    top: h(2),
+                                    left: w(3),
+                                    bottom: h(1.5),
+                                    right: w(3)),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  color: Color(0xffffffff),
+                                  border: Border.all(
+                                      width: 1.0,
+                                      color: const Color(0xffd8d8d8)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: const Color(0x29000000),
+                                      offset: Offset(-10, -10),
+                                      blurRadius: 6,
+                                    ),
+                                  ],
+                                ),
+                                child: new Column(
+                                  children: <Widget>[
+                                    // _maincategory(context),
+                                    //Divider(),
 
-                          ListTile(
-                              leading: Text(state.orders[index].orderNumber),
-                              title: Text(
-                                  "${state.orders[index].totalprice.toString()} EGP"),
-                              subtitle: Text(state.orders[index].order_date),
-                              trailing: Text(state.orders[index].orderStatus),
-                              //isThreeLine: true,
-                              onTap: () {
-                                setState(() => _stillloading = true);
-                                getorderdetails(state.orders[index].id);
-                              }
-                              // Navigator.pushNamed(context, '/orderDetial'),
+                                    ListTile(
+                                        leading: Text(
+                                            state.orders[index].orderNumber),
+                                        title: Text(
+                                            "${state.orders[index].totalprice.toString()} EGP"),
+                                        subtitle: Text(
+                                            state.orders[index].order_date),
+                                        trailing: state.orders[index]
+                                                    .orderStatus ==
+                                                'Rejected'
+                                            ? Text(
+                                                state.orders[index].orderStatus,
+                                                style: TextStyle(
+                                                    color: Colors.red),
+                                              )
+                                            : Text(state
+                                                .orders[index].orderStatus),
+                                        //isThreeLine: true,
+                                        onTap: () {
+                                          setState(() => _stillloading = true);
+                                          getorderdetails(
+                                              state.orders[index].id);
+                                        }
+                                        // Navigator.pushNamed(context, '/orderDetial'),
 
-                              ),
-                          // Divider(),
+                                        ),
+                                    // Divider(),
 
-                          // new SizedBox(height: h(1)),
-                        ],
-                      ));
-                    },
+                                    // new SizedBox(height: h(1)),
+                                  ],
+                                ));
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
           );
         }));
   }
