@@ -35,8 +35,8 @@ class UserProfile extends StatelessWidget {
                           //Divider(),
                           SizedBox(height: h(3)),
                           _header('Hi ${state.user.username} '),
-                          Text('How Can we help You ?'),
-                          new SizedBox(height: h(2)),
+                          // Text('How Can we help You ?'),
+                          new SizedBox(height: h(4)),
                           Divider(),
 
                           // Divider(),
@@ -92,12 +92,12 @@ class UserProfile extends StatelessWidget {
 Widget _header(str) {
   return Container(
       child: Align(
-    alignment: Alignment.center,
+    alignment: Alignment.centerLeft,
     child: Padding(
       padding: const EdgeInsets.only(left: 25),
       child: Text(str,
           style: new TextStyle(
-              fontSize: 18.0, color: Colors.red, fontWeight: FontWeight.bold)),
+              fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold)),
     ),
   ));
 }

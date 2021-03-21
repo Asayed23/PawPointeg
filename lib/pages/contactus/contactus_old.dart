@@ -13,7 +13,7 @@ class Contactus extends StatelessWidget {
         shrinkWrap: true,
         physics: ScrollPhysics(),
         children: <Widget>[
-          new SizedBox(height: 10.0),
+          new SizedBox(height: 20.0),
           new Container(
             child: new ListView.builder(
               shrinkWrap: true,
@@ -31,24 +31,23 @@ class Contactus extends StatelessWidget {
                     ),
                     // _header('Paw Point'),
                     // _horizontalListView(state.serviceProducts, 'service'),
-                    new SizedBox(height: h(7), width: w(5)),
+                    new SizedBox(height: h(10)),
                     // Divider(),
                     ListTile(
                       leading: SvgPicture.asset(
                         "assets/icons/phone-call.svg",
-                        width: 30,
-                        height: 30,
+                        width: 38,
+                        height: 38,
                         color: Colors.blueGrey,
                       ),
                       title: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           GestureDetector(
                               onTap: () => _launchURL('tel:01020720189'),
-                              child: _header('1020720189')),
+                              child: _header('01020720189')),
                           GestureDetector(
                               onTap: () => _launchURL('tel:01008728854'),
-                              child: _header('1008728854')),
+                              child: _header('01008728854')),
                         ],
                       ),
                       onTap: () => {},
@@ -61,12 +60,10 @@ class Contactus extends StatelessWidget {
                         width: 38,
                         height: 38,
                       ),
-                      title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children:[GestureDetector(child:_header('01020720189'),
+                      title: _header('01020720189'),
                       onTap: () =>
                           _launchURL('https://wa.me/message/DX6QGNPAX3ZKK1'),
-                )])),
+                    ),
                     // Divider(),
 
                     Divider(),
@@ -77,12 +74,10 @@ class Contactus extends StatelessWidget {
                         width: 38,
                         height: 38,
                       ),
-                      title: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                children:[GestureDetector(child:_header('facebook.com/pawpointeg'),
+                      title: _header('facebook.com/pawpointeg'),
                       onTap: () =>
                           _launchURL('https://www.facebook.com/pawpointeg'),
-                )])),
+                    ),
                     Divider(),
                     ListTile(
                       leading: SvgPicture.asset(
@@ -90,12 +85,10 @@ class Contactus extends StatelessWidget {
                         width: 38,
                         height: 38,
                       ),
-                      title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children:[GestureDetector(child:_header('pawpointeg'),
+                      title: _header('pawpointeg'),
                       onTap: () => _launchURL(
                           'https://instagram.com/pawpointeg?igshid=1xz7bs45up7zq'),
-                    )])),
+                    ),
                     Divider(),
                     ListTile(
                       leading: SvgPicture.asset(
@@ -103,11 +96,9 @@ class Contactus extends StatelessWidget {
                         width: 38,
                         height: 38,
                       ),
-                      title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children:[GestureDetector(child:_header('pawpoint20@gmail.com'),
+                      title: _header('pawpoint20@gmail.com'),
                       // onTap: () => _launchURL('pawpoint20@gmail.com'),
-                    )])),
+                    ),
                     Divider(),
                     ListTile(
                       leading: SvgPicture.asset(
@@ -115,12 +106,10 @@ class Contactus extends StatelessWidget {
                         width: 38,
                         height: 38,
                       ),
-                      title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children:[GestureDetector(child:_header('Paw point Al Sheikh Zayed'),
+                      title: _header('Paw point Al Sheikh Zayed, Giza'),
                       onTap: () => _launchURL(
                           'https://www.google.com/maps/dir//30.0435555,30.987951/@29.970908,31.023076,10z/data=!4m5!4m4!1m1!4e2!1m0!3e0'),
-                    )])),
+                    ),
                     Divider(),
 
                     new SizedBox(height: h(1)),
@@ -144,7 +133,7 @@ Widget _header(str) {
       child: Text(str,
           style: new TextStyle(
               fontSize: 18.0,
-              color: Colors.black,
+              color: Color(0xffe83636),
               fontWeight: FontWeight.bold)),
     ),
   ));

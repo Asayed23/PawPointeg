@@ -221,32 +221,32 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                   )
                 ]),
               ),
-              RadioListTile(
-                value: 1,
-                groupValue: value,
-                onChanged: (ind) {
-                  setState(() => value = ind);
+              // RadioListTile(
+              //   value: 1,
+              //   groupValue: value,
+              //   onChanged: (ind) {
+              //     setState(() => value = ind);
 
-                  _order.paymentMethod = "using Bank Card";
-                  StoreProvider.of<AppState>(context)
-                      .dispatch(Updatecurrentorder(_order));
-                  state.inloading.selected = true;
-                  StoreProvider.of<AppState>(context)
-                      .dispatch(UpdateInloading(state.inloading));
-                  // state.shippingAddress[index].selected = true;
-                },
-                activeColor: Colors.red,
-                title: Row(children: [
-                  Text('using Bank Card'),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Icon(
-                      Icons.credit_card,
-                      color: Colors.red,
-                    ),
-                  )
-                ]),
-              ),
+              //     _order.paymentMethod = "using Bank Card";
+              //     StoreProvider.of<AppState>(context)
+              //         .dispatch(Updatecurrentorder(_order));
+              //     state.inloading.selected = true;
+              //     StoreProvider.of<AppState>(context)
+              //         .dispatch(UpdateInloading(state.inloading));
+              //     // state.shippingAddress[index].selected = true;
+              //   },
+              //   activeColor: Colors.red,
+              //   title: Row(children: [
+              //     Text('using Bank Card'),
+              //     Padding(
+              //       padding: const EdgeInsets.only(left: 8.0),
+              //       child: Icon(
+              //         Icons.credit_card,
+              //         color: Colors.red,
+              //       ),
+              //     )
+              //   ]),
+              // ),
               if (showload)
                 AlertDialog(
                     title: Text('We are working......Please Wait..'),
